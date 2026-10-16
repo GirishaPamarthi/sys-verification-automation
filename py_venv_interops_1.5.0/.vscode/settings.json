@@ -1,0 +1,18 @@
+{
+    "python.defaultInterpreterPath": "c:\\solver_automation\\py_venv_interops_mim_remote_server\\.venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "c:\\solver_automation\\py_venv_interops_mim_remote_server\\Lib\\site-packages",
+        "c:\\Program Files (x86)\\Squish for Windows 9.2.2\\lib\\python"
+    ],
+    "python.autoComplete.extraPaths": [
+        "c:\\solver_automation\\py_venv_interops_mim_remote_server\\Lib\\site-packages",
+        "c:\\Program Files (x86)\\Squish for Windows 9.2.2\\lib\\python"
+    ],
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
+}

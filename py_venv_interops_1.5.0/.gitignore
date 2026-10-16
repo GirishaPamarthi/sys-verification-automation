@@ -1,0 +1,6 @@
+my-test-scripts/
+MSQ-SYS-SmokeTestSuite/
+test_connect.py
+**/__pycache__/
+**/_pycache_/
+*.py[cod]
