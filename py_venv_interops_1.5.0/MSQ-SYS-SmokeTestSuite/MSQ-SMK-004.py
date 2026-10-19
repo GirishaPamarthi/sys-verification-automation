@@ -44,7 +44,9 @@ def select_patient():
     MosaiqDashboard.open_select_patient()
     MosaiqOpenPatient.typeText_in_patient_mr_number(MOSAIQ_ORDERS_PATIENT_MR)
     MosaiqOpenPatient.click_apply_filters_button()
-    MosaiqOpenPatient.click_first_search_result()
+    #MosaiqOpenPatient.click_first_search_result()
+    MosaiqOpenPatient.click_specific_result_using_mr_number(MOSAIQ_ORDERS_PATIENT_MR)
+
 
 # Access eChart -> Orders menu item.
 def access_echart_orders():

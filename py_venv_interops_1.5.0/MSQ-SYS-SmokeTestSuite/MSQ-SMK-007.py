@@ -44,7 +44,7 @@ def select_patient():
     MosaiqDashboard.open_select_patient()
     MosaiqOpenPatient.typeText_in_patient_mr_number(MOSAIQ_ORDERS_PATIENT_MR)
     MosaiqOpenPatient.click_apply_filters_button()
-    MosaiqOpenPatient.select_first_search_result()
+    MosaiqOpenPatient.click_specific_result_using_mr_number(MOSAIQ_ORDERS_PATIENT_MR)
     #MosaiqOpenPatient.click_first_search_result()
 
 # Open the patient code summary section.
