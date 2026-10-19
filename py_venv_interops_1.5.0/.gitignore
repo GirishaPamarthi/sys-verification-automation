@@ -2,3 +2,4 @@ test_connect.py
 **/__pycache__/
 **/_pycache_/
 *.py[cod]
+*.py.bak

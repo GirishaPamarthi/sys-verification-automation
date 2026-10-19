@@ -69,7 +69,7 @@ import types
 # Environment
 # ---------------------------------------------------------------------------
 
-ROOT_ENV = r"C:\solver_automation\py_venv_interops_1.5.0"
+ROOT_ENV = r"C:\sys-verification-automation\py_venv_interops_1.5.0"
 SQUISH_ROOT = r"C:\Program Files (x86)\Squish for Windows 9.2.2"
 # The executables and squishrunnerlib.dll live in a SEPARATE install from the data
 # files. Report generators resolve their templates relative to this one.
