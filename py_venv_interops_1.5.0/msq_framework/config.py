@@ -1,11 +1,11 @@
-"""Server, port and application settings for every test suite.
+"""Server, port, application and machine-path settings for every test suite.
 
-The values live in test_environment.json; this module turns them into a typed TestTarget
-so tests read attributes (CFG.server_host) instead of nested dictionary keys.
+The values live in environments/test_environment.json; this module turns them into a
+typed TestTarget so tests read attributes (CFG.server_host) instead of nested dictionary keys.
 
 Usage in a test:
-    import test_config
-    CFG = test_config.for_test("smoke", "MSQ-SMK-001")
+    from msq_framework import config
+    CFG = config.for_test("smoke", "MSQ-SMK-001")
     MOSAIQ_SERVER = CFG.server_host
 
 To run against another lab without editing the committed file, point MSQ_TEST_CONFIG at
@@ -17,7 +17,10 @@ import json
 import os
 from dataclasses import dataclass
 
-DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "test_environment.json")
+# This venv's root -- the folder that holds msq_framework, Lib and Scripts.
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "environments", "test_environment.json")
 CONFIG_PATH = os.environ.get("MSQ_TEST_CONFIG", DEFAULT_CONFIG_PATH)
 
 
@@ -51,6 +54,11 @@ def _load(path: str) -> dict:
 
 
 _RAW = _load(CONFIG_PATH)
+
+# Machine-specific install and output locations, used by reporting.
+SQUISH_ROOT = _RAW["paths"]["squish_root"]
+SQUISH_RUNTIME_ROOT = _RAW["paths"]["squish_runtime_root"]
+RESULTS_ROOT = _RAW["paths"]["results_root"]
 
 
 def for_test(suite: str, test_id: str) -> TestTarget:

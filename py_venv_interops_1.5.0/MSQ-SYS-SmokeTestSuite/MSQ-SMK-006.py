@@ -1,14 +1,14 @@
 import time
 
-import test_config
+from msq_framework import config
 
 from interops.libraries.mosaiq import MosaiqAutController
 from interops.libraries.squish_actions import CommonActions
 from interops.libraries.mosaiq.interactions import MosaiqDashboard, MosaiqOpenPatient, MosaiqQCL
 from interops.libraries.mosaiq.pages import Login, Logout
 
-# Server, port and AUT come from configuration-files/test_environment.json.
-CFG = test_config.for_test("smoke", "MSQ-SMK-006")
+# Server, port and AUT come from msq_framework/environments/test_environment.json.
+CFG = config.for_test("smoke", "MSQ-SMK-006")
 MOSAIQ_SERVER = CFG.server_host
 SQUISH_SERVER_PORT = CFG.squish_port
 

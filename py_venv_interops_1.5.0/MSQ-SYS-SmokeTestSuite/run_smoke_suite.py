@@ -23,8 +23,8 @@ from urllib.parse import quote
 SUITE_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = SUITE_ROOT.parent
 
-# my-test-scripts is on sys.path via Lib/site-packages/_paths.pth.
-import test_report_gen_script as reporting
+# msq_framework is importable via Lib/site-packages/msq_test_paths.pth.
+from msq_framework import reporting
 
 SUITE_REPORT_NAME = "SMK Test Suite"
 

@@ -1,4 +1,9 @@
 {
+  "paths": {
+    "squish_root": "C:\\Program Files (x86)\\Squish for Windows 9.2.2",
+    "squish_runtime_root": "C:\\Program Files (x86)\\squish_runtime",
+    "results_root": "C:\\solver_automation\\test-results"
+  },
   "squish": {
     "default_port": 4322
   },

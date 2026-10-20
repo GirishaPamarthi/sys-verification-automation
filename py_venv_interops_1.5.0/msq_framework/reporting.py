@@ -1,4 +1,4 @@
-"""Shared Squish test-reporting setup for every test script in this folder.
+"""Shared Squish test-reporting setup for every test script in this project.
 
 Import this FIRST, before any `interops` import. At import time it does two things
 that have to happen in that order:
@@ -10,7 +10,7 @@ that have to happen in that order:
 
 Typical use:
 
-    import test_report_gen_script as reporting
+    from msq_framework import reporting
     from interops.libraries.mosaiq import MosaiqAutController
     ...
 
@@ -65,17 +65,19 @@ import shutil
 import sys
 import types
 
+from msq_framework import config
+
 # ---------------------------------------------------------------------------
-# Environment
+# Environment -- machine paths come from environments/test_environment.json
 # ---------------------------------------------------------------------------
 
-ROOT_ENV = r"C:\sys-verification-automation\py_venv_interops_1.5.0"
-SQUISH_ROOT = r"C:\Program Files (x86)\Squish for Windows 9.2.2"
+ROOT_ENV = config.PROJECT_ROOT
+SQUISH_ROOT = config.SQUISH_ROOT
 # The executables and squishrunnerlib.dll live in a SEPARATE install from the data
 # files. Report generators resolve their templates relative to this one.
-SQUISH_RUNTIME_ROOT = r"C:\Program Files (x86)\squish_runtime"
+SQUISH_RUNTIME_ROOT = config.SQUISH_RUNTIME_ROOT
 
-RESULTS_ROOT = r"C:\solver_automation\test-results"
+RESULTS_ROOT = config.RESULTS_ROOT
 DEFAULT_REPORT_FORMAT = "html"
 
 # Formats confirmed working on this machine. "xml" also works but Squish warns it

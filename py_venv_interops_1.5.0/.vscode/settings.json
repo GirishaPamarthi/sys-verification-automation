@@ -1,15 +1,13 @@
 {
     "python.defaultInterpreterPath": "${workspaceFolder}\\Scripts\\python.exe",
     "python.analysis.extraPaths": [
+        "${workspaceFolder}",
         "${workspaceFolder}\\Lib\\site-packages",
-        "${workspaceFolder}\\configuration-files",
-        "${workspaceFolder}\\my-test-scripts",
         "c:\\Program Files (x86)\\Squish for Windows 9.2.2\\lib\\python"
     ],
     "python.autoComplete.extraPaths": [
+        "${workspaceFolder}",
         "${workspaceFolder}\\Lib\\site-packages",
-        "${workspaceFolder}\\configuration-files",
-        "${workspaceFolder}\\my-test-scripts",
         "c:\\Program Files (x86)\\Squish for Windows 9.2.2\\lib\\python"
     ],
     "python-envs.defaultEnvManager": "ms-python.python:venv"

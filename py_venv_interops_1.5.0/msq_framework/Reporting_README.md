@@ -1,10 +1,10 @@
 # Squish Reporting Helper
 
-This folder contains a shared test-reporting helper for Squish-based automation scripts that use the InterOps libraries from this environment.
+This package contains the shared test-reporting helper for Squish-based automation scripts that use the InterOps libraries from this environment.
 
 The main entry point is:
 
-- `test_report_gen_script.py`
+- `reporting.py` (import as `from msq_framework import reporting`)
 
 It bootstraps the Squish runtime and InterOps environment, applies compatibility shims, and exposes the helper functions needed to start a Squish report, log verifications, and finish the run cleanly.
 
@@ -20,7 +20,7 @@ At import time, the script:
 This lets a script do the usual pattern:
 
 ```python
-import test_report_gen_script as reporting
+from msq_framework import reporting
 from interops.libraries.mosaiq import MosaiqAutController
 
 sq = reporting.start_reporting("my_test_case", aut_name="accwin")
@@ -37,7 +37,7 @@ reporting.finish_reporting(sq)
 
 This helper expects:
 
-- the root project environment at `C:\solver_automation\py_venv_interops_mim_remote_server`
+- the root project environment at `C:\sys-verification-automation\py_venv_interops_1.5.0`
 - Squish for Windows 9.2.2 installed at `C:\Program Files (x86)\Squish for Windows 9.2.2`
 - the Squish runtime install at `C:\Program Files (x86)\squish_runtime`
 - InterOps installed into the project virtual environment
@@ -52,7 +52,7 @@ Parameters:
 
 - `test_case_name`: name recorded in the report
 - `aut_name`: AUT name registered with Squish, such as `accwin`
-- `report_dir`: output directory; defaults to `C:\solver_automation\test-results\<test_case_name>`
+- `report_dir`: output directory; defaults to `C:\sys-verification-automation\test-results\<test_case_name>`
 - `report_format`: one of `html`, `xml3`, `junit`, `json`, or `stdout`
 - `screenshot_dir`: directory for screenshot captures; defaults to `<report_dir>\screenshots`
 
@@ -103,7 +103,7 @@ These are documented inline in the script itself and are intended as a workaroun
 ## Typical script pattern
 
 ```python
-import test_report_gen_script as reporting
+from msq_framework import reporting
 
 sq = reporting.start_reporting(
     "login_test",

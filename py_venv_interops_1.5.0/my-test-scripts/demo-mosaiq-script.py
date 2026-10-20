@@ -1,7 +1,7 @@
-# Reporting setup lives in test_report_gen_script and MUST be imported before any
+# Reporting setup lives in msq_framework.reporting and MUST be imported before any
 # interops import: it puts Squish on sys.path and installs the compatibility shims
 # interops needs to report under the standalone squishtest extension.
-import test_report_gen_script as reporting
+from msq_framework import reporting
 
 from interops.libraries.mosaiq import MosaiqAutController
 from interops.libraries.squish_actions import CommonActions

@@ -1,10 +1,9 @@
-# Reporting setup lives in test_report_gen_script and MUST be imported before any
+# Reporting setup lives in msq_framework.reporting and MUST be imported before any
 # interops import: it puts Squish on sys.path and installs the compatibility shims
 # interops needs to report under the standalone squishtest extension.
 from datetime import datetime
 
-import test_config
-import test_report_gen_script as reporting
+from msq_framework import config, reporting
 
 from interops.libraries.mosaiq.interactions.objects.mosaiq_core_objects import MosaiqCoreObjects
 from interops.libraries.mosaiq.interactions.objects.mosaiq_select_patient_objects import MosaiqSelectPatient
@@ -24,8 +23,8 @@ VerifyThat = reporting.VerifyThat
 test_section = reporting.test_section
 
 
-# Server, port and AUT come from configuration-files/test_environment.json.
-CFG = test_config.for_test("smoke", "MSQ-SMK-010")
+# Server, port and AUT come from msq_framework/environments/test_environment.json.
+CFG = config.for_test("smoke", "MSQ-SMK-010")
 MOSAIQ_SERVER = CFG.server_host
 SQUISH_SERVER_PORT = CFG.squish_port
 MOSAIQ_AUT_NAME = CFG.aut_name
