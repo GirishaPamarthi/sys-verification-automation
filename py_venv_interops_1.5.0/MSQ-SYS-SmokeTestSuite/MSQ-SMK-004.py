@@ -1,31 +1,15 @@
-import sys, os, time
+import time
 
-ROOT_ENV = r"C:\sys-verification-automation\py_venv_interops_1.5.0"
-ROOT_SITE_PACKAGES = os.path.join(ROOT_ENV, "Lib", "site-packages")
-DOTVENV_SITE_PACKAGES = os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "Lib", "site-packages")
-
-# Prefer the root environment site-packages when available, because that is where interops is installed.
-if os.path.isdir(ROOT_SITE_PACKAGES) and ROOT_SITE_PACKAGES not in sys.path:
-    sys.path.insert(0, ROOT_SITE_PACKAGES)
-
-if os.path.isdir(DOTVENV_SITE_PACKAGES) and DOTVENV_SITE_PACKAGES not in sys.path:
-    sys.path.insert(0, DOTVENV_SITE_PACKAGES)
-
-# Ensure Squish runtime paths are available so the squishtest extension can be imported.
-SQUISH_ROOT = r"C:\Program Files (x86)\Squish for Windows 9.2.2"
-SQUISH_BIN = os.path.join(SQUISH_ROOT, "bin")
-SQUISH_PY = os.path.join(SQUISH_ROOT, "lib", "python")
-for p in (SQUISH_BIN, SQUISH_PY):
-    if os.path.isdir(p) and p not in sys.path:
-        sys.path.insert(0, p)
+import test_config
 
 from interops.libraries.mosaiq import MosaiqAutController
 from interops.libraries.mosaiq.interactions import MosaiqDashboard, MosaiqOpenPatient, MosaiqOrders
 from interops.libraries.mosaiq.pages import Login, Logout
 
-# Server and Port configurations
-MOSAIQ_SERVER = "10.68.132.189"
-SQUISH_SERVER_PORT = 4322
+# Server, port and AUT come from configuration-files/test_environment.json.
+CFG = test_config.for_test("smoke", "MSQ-SMK-004")
+MOSAIQ_SERVER = CFG.server_host
+SQUISH_SERVER_PORT = CFG.squish_port
 MOSAIQ_ORDERS_PATIENT_MR = "2007"
 
 #Pre-requisites: 

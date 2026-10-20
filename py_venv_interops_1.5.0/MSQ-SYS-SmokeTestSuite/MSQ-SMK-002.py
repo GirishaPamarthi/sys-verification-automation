@@ -1,13 +1,7 @@
 # Reporting setup lives in test_report_gen_script and MUST be imported before any
 # interops import: it puts Squish on sys.path and installs the compatibility shims
 # interops needs to report under the standalone squishtest extension.
-import os
-import sys
-
-MY_TEST_SCRIPTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "my-test-scripts"))
-if MY_TEST_SCRIPTS_DIR not in sys.path:
-    sys.path.insert(0, MY_TEST_SCRIPTS_DIR)
-
+import test_config
 import test_report_gen_script as reporting
 
 from interops.libraries.mosaiq.interactions.objects.mosaiq_core_objects import MosaiqCoreObjects
@@ -25,8 +19,11 @@ VerifyThat = reporting.VerifyThat
 test_section = reporting.test_section
 
 
-MOSAIQ_SERVER = "10.68.134.200"
-SQUISH_SERVER_PORT = 4322
+# Server, port and AUT come from configuration-files/test_environment.json.
+CFG = test_config.for_test("smoke", "MSQ-SMK-002")
+MOSAIQ_SERVER = CFG.server_host
+SQUISH_SERVER_PORT = CFG.squish_port
+MOSAIQ_AUT_NAME = CFG.aut_name
 
 PATIENT_MR = "84082"
 PATIENT_FIRST_NAME = "LUNGPATIENT"
@@ -35,7 +32,6 @@ PATIENT_BIRTHDATE = "1/24/1989"
 PATIENT_GENDER = "Female"
 
 TEST_CASE_NAME = "MOSAIQ Client Patient Search and Patient Chart Open"
-MOSAIQ_AUT_NAME = "accwin"  # matches MosaiqAutController._aut_name
 
 
 def login_valid_clinical_user() -> None:

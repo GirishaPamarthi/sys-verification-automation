@@ -22,11 +22,8 @@ from urllib.parse import quote
 
 SUITE_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = SUITE_ROOT.parent
-MS_TEST_SCRIPTS_DIR = PROJECT_ROOT / "my-test-scripts"
 
-if str(MS_TEST_SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(MS_TEST_SCRIPTS_DIR))
-
+# my-test-scripts is on sys.path via Lib/site-packages/_paths.pth.
 import test_report_gen_script as reporting
 
 SUITE_REPORT_NAME = "SMK Test Suite"

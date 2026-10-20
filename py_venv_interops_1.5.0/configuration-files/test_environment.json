@@ -1,0 +1,26 @@
+{
+  "squish": {
+    "default_port": 4322
+  },
+  "applications": {
+    "mosaiq": { "aut_name": "accwin" },
+    "monaco": {}
+  },
+  "servers": {
+    "MSQ_PRIMARY":   { "host": "10.68.134.200", "app": "mosaiq" },
+    "MSQ_SECONDARY": { "host": "10.68.132.189", "app": "mosaiq" },
+    "MSQ_ALTERNATE": { "host": "192.168.86.41", "app": "mosaiq" },
+    "MONACO_PRIMARY": { "host": "10.68.132.154", "app": "monaco" }
+  },
+  "suites": {
+    "smoke": {
+      "default_server": "MSQ_PRIMARY",
+      "overrides": {
+        "MSQ-SMK-004": "MSQ_SECONDARY",
+        "MSQ-SMK-006": "MSQ_SECONDARY",
+        "MSQ-SMK-007": "MSQ_SECONDARY",
+        "MSQ-SMK-008": "MSQ_SECONDARY"
+      }
+    }
+  }
+}

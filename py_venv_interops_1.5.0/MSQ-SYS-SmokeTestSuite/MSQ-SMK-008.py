@@ -2,13 +2,8 @@
 # interops import: it puts Squish on sys.path and installs the compatibility shims
 # interops needs to report under the standalone squishtest extension.
 import base64
-import os
-import sys
 
-MY_TEST_SCRIPTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "my-test-scripts"))
-if MY_TEST_SCRIPTS_DIR not in sys.path:
-    sys.path.insert(0, MY_TEST_SCRIPTS_DIR)
-
+import test_config
 import test_report_gen_script as reporting
 from remotesystem import RemoteSystem
 
@@ -29,9 +24,11 @@ VerifyThat = reporting.VerifyThat
 test_section = reporting.test_section
 
 
-MOSAIQ_SERVER = "10.68.132.189"
-#MOSAIQ_SERVER = "10.68.134.200"
-SQUISH_SERVER_PORT = 4322
+# Server, port and AUT come from configuration-files/test_environment.json.
+CFG = test_config.for_test("smoke", "MSQ-SMK-008")
+MOSAIQ_SERVER = CFG.server_host
+SQUISH_SERVER_PORT = CFG.squish_port
+MOSAIQ_AUT_NAME = CFG.aut_name
 
 # The patient this test opens. MUST have at least one existing entry in its Image List --
 # this test reviews an existing image, it does not import or create one.
@@ -48,7 +45,6 @@ IMAGE_SEARCH_VALUE = "PA Rectum/Pelvis"
 IMAGE_VIEWER_PROCESS = "Elekta.Application.CommonShell"
 
 TEST_CASE_NAME = "Image Review Workflow"
-MOSAIQ_AUT_NAME = "accwin"  # matches MosaiqAutController._aut_name
 
 
 def patient_last_name_from_banner(bannerText: str) -> str:
